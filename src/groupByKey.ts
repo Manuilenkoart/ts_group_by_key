@@ -1,12 +1,5 @@
 export function groupByKey<T>(items: T[], key: keyof T): Record<string, T[]> {
-  const sort = [...items].sort((a: T, b: T) => {
-    const valueA = a[key];
-    const valueB = b[key];
-
-    return valueA > valueB ? 0 : 1;
-  });
-
-  const grouped = sort.reduce(
+  const grouped = items.reduce(
     (acc, e: T) => {
       const v = String(e[key]);
 
